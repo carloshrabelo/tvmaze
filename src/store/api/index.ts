@@ -42,8 +42,17 @@ export const api = createApi({
     showEpisodes: build.query<Episode[], string>({
       query: (id) => `shows/${id}/episodes`,
       transformResponse: (response: EpisodeAPI[]) => response.map(parserEpisode)
+    }),
+    episodeDetail: build.query<Episode, string>({
+      query: (id) => `episodes/${id}`,
+      transformResponse: (response: EpisodeAPI) => parserEpisode(response)
     })
   })
 });
 
-export const { useShowQuery, useShowDetailQuery, useShowEpisodesQuery } = api;
+export const {
+  useShowQuery,
+  useShowDetailQuery,
+  useShowEpisodesQuery,
+  useEpisodeDetailQuery
+} = api;
