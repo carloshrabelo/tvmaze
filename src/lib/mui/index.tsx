@@ -1,8 +1,8 @@
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import { ReactNode } from "react";
 
-const theme = createTheme();
+import theme from "./theme";
 
 export function MaterialThemeProvider({ children }: { children: ReactNode }) {
   return (
