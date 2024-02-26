@@ -63,6 +63,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Folder structure
 
 ```
+📂 docs - Files referring to documentation
 📂 public - Static file serving
 📂 src/
 ┣━╾📂 components - UI components
