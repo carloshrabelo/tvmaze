@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+<h1 align="center">Tv Maze</h1>
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/react-20232a?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Create React App](https://img.shields.io/badge/Create%20react%20app-09D3AC?style=for-the-badge&logo=createreactapp&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
+![MUI](https://img.shields.io/badge/MUI-0081CB?style=for-the-badge&logo=mui&logoColor=white)
+![MUI](https://img.shields.io/badge/👩‍🎤%20Emotion-d26ac2?style=for-the-badge&logoColor=white)
+![MUI](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+</div>
 
-## Available Scripts
+This project is a simple application made in React using the [Tv Maze API](http://api.tvmaze.com), its goal is to apply the best practices for the development of an application in React.
 
-In the project directory, you can run:
+This application searches for series and shows some information about them, as well as episode information.
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You need the [node](https://nodejs.org/en/download/) to run this project, this example was created for the version `v20.9.0`. Dependencies was installed with [yarn](https://classic.yarnpkg.com/en/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Install yarn
+```bash
+npm -g yarn
+```
 
-### `yarn test`
+### Install dependencies
+```bash
+yarn install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Run application
 
-### `yarn build`
+Before running the application you will need to create a `.env` file in the project root, you can rename `.env.sample` without needing to make any changes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Dev
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prod
 
-### `yarn eject`
+```bash
+yarn build
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+npm install -g serve
+serve -s build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Folder structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+📂 public - Static file serving
+📂 src/
+┣━╾📂 components - UI components
+┣━╾📂 hook  - React Hooks
+┣━╾📂 lib - Libraries configuration
+┣━╾📂 mock - Mocks files to be used in test files
+┣━╾📂 page - Pages that will be displayed
+┣━╾📂 store - Storage configuration
+┣━╾📂 types - Types
+┗━╾📂 utils - Functions helpers
+```
 
-## Learn More
+## Licença
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The [MIT License]() (MIT)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Copyright :copyright: 2024
