@@ -14,6 +14,13 @@ This project is a simple application made in React using the [Tv Maze API](http:
 
 This application searches for series and shows some information about them, as well as episode information.
 
+## Preview
+| Home                   | Show                           | Episode                           |
+| ------------------------- | -------------------------------- | -------------------------------- |
+| ![Desktop Home](./docs/desk_home.png) | ![Desktop Show](./docs/desk_show.png) | ![Desktop Episode](./docs/desk_episode.png) |
+| ![Tablet Home](./docs/tablet_home.png) | ![Tablet Show](./docs/tablet_show.png) | ![Tablet Episode](./docs/tablet_episode.png) |
+| ![Mobile Home](./docs/mob_home.png) | ![Mobile Show](./docs/mob_show.png) | ![Mobile Episode](./docs/mob_episode.png) |
+
 ## Installation
 
 You need the [node](https://nodejs.org/en/download/) to run this project, this example was created for the version `v20.9.0`. Dependencies was installed with [yarn](https://classic.yarnpkg.com/en/)
