@@ -7,14 +7,35 @@ import Typography from "@mui/material/Typography";
 import { Star } from "lucide-react";
 
 import * as S from "./style";
-import { Show } from "../../types";
+import { Episode, Show } from "../../types";
 
-export default function ShowDetail(data: Partial<Show>) {
+export default function ShowDetail({
+  image,
+  name,
+  genres,
+  rating,
+  status,
+  season,
+  number,
+  summary
+}: Partial<Show & Episode>) {
+  const dataList = [
+    [
+      "Rating",
+      <>
+        <Star fill={yellow[500]} color={yellow[600]} size="1rem" /> {rating}
+      </>
+    ],
+    ["Status", status],
+    ["Season", season],
+    ["Number", number]
+  ].filter(([_label, value]) => !!value);
+
   return (
     <S.Card>
       <S.ImgPlaceholder>
-        {data.image ? (
-          <S.Img src={data.image} alt={data.name} />
+        {image ? (
+          <S.Img src={image} alt={name} />
         ) : (
           <S.Skeleton
             sx={{ bgcolor: "grey.500" }}
@@ -28,9 +49,9 @@ export default function ShowDetail(data: Partial<Show>) {
       </S.ImgPlaceholder>
       <S.Content>
         <S.Content>
-          <Typography variant="h1">{data.name}</Typography>
+          <Typography variant="h1">{name}</Typography>
           <Stack direction="row" gap={1} flexWrap="wrap">
-            {data.genres?.map((genre: string) => (
+            {genres?.map((genre: string) => (
               <Chip
                 key={genre}
                 label={genre}
@@ -41,22 +62,15 @@ export default function ShowDetail(data: Partial<Show>) {
             ))}
           </Stack>
           <S.List>
-            <ListItem disablePadding>
-              <ListItemText primary="Rating" />
-              <ListItemText>
-                <Star fill={yellow[500]} color={yellow[600]} size="1rem" />{" "}
-                {data.rating}
-              </ListItemText>
-            </ListItem>
-            {!data?.status ? null : (
-              <ListItem disablePadding>
-                <ListItemText primary="Status" />
-                <ListItemText primary={data?.status} />
+            {dataList.map(([label, value], key) => (
+              <ListItem disablePadding key={key}>
+                <ListItemText primary={label} />
+                <ListItemText primary={value} />
               </ListItem>
-            )}
+            ))}
           </S.List>
         </S.Content>
-        <Typography variant="body1">{data.summary}</Typography>
+        <Typography variant="body1">{summary}</Typography>
       </S.Content>
     </S.Card>
   );
