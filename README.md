@@ -14,6 +14,8 @@ This project is a simple application made in React using the [Tv Maze API](http:
 
 This application searches for series and shows some information about them, as well as episode information.
 
+This application is also available on [github pages](https://carloshrabelo.dev/tvmaze/)
+
 ## Preview
 | Home                   | Show                           | Episode                           |
 | ------------------------- | -------------------------------- | -------------------------------- |
@@ -37,7 +39,7 @@ yarn install
 
 ## Run application
 
-Before running the application you will need to create a `.env` file in the project root, you can rename `.env.sample` without needing to make any changes
+Before running the application you will need to create a `.env.development` file in the project root, you can rename `.env.development.sample` without needing to make any changes
 
 ### Dev
 
@@ -46,6 +48,8 @@ yarn start
 ```
 
 ### Prod
+
+Before deploying the application you will need to create a `.env.production` file in the project root, you can rename `.env.production.sample` without needing to make any changes
 
 ```bash
 yarn build
