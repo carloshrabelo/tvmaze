@@ -5,8 +5,8 @@ import InputBase from "@mui/material/InputBase";
 import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
 import { Search as SearchIcon } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, FormEvent } from "react";
+import { useSearchParams, Link } from "react-router-dom";
 
 import * as S from "./style";
 import Cover from "../../components/Cover";
@@ -15,15 +15,31 @@ import useDebounce from "../../hooks/useDebounce";
 import { useShowQuery } from "../../store/api";
 
 export default function Home() {
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") || "");
   const debouncedQuery = useDebounce(query);
   const { data, isFetching } = useShowQuery(debouncedQuery);
+
+  useEffect(() => {
+    if (debouncedQuery !== searchParams.get("q")) {
+      setSearchParams(!debouncedQuery ? {} : { q: debouncedQuery });
+    }
+  }, [searchParams, debouncedQuery, setSearchParams]);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSearchParams({ q: query });
+  };
 
   return (
     <>
       <AppBar position="sticky">
         <Toolbar>
-          <Paper component="form" sx={{ display: "flex", width: "100%" }}>
+          <Paper
+            component="form"
+            sx={{ display: "flex", width: "100%" }}
+            onSubmit={handleSubmit}
+          >
             <InputBase
               sx={{ ml: 1, flex: 1 }}
               placeholder="Search shows"
