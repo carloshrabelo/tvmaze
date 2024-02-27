@@ -1,0 +1,42 @@
+name: continuous-integration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 20.10.0
+
+      - name: Cache dependencies
+        uses: actions/cache@v4.0.0
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install project dependencies
+        run: |
+          yarn --prefer-offline
+      - name: Deploy
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          CI=false && yarn deploy -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_ENV: ${{secrets.NODE_ENV}}
+          PUBLIC_URL: ${{secrets.PUBLIC_URL}}
+          REACT_APP_API_TV: ${{secrets.REACT_APP_API_TV}}
+
+
