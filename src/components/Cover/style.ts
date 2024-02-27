@@ -3,12 +3,12 @@ import CardMediaDOM from "@mui/material/CardMedia";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 
-export const Card = styled(CardDOM)<{ small?: boolean }>`
+export const Card = styled(CardDOM)<{ styled?: { small?: boolean } }>`
   cursor: pointer;
 
   position: relative;
 
-  min-height: ${(props) => (props.small ? "180px" : "360px")};
+  min-height: ${(props) => (props?.styled?.small ? "180px" : "360px")};
 
   border-radius: 1rem;
   box-shadow: none;

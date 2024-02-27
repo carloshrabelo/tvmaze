@@ -4,7 +4,7 @@ import * as S from "./style";
 
 export default function CoverPlaceholder({ small }: { small?: boolean }) {
   return (
-    <S.Card small={small}>
+    <S.Card styled={{ small }}>
       <Skeleton
         variant="rectangular"
         width="100%"

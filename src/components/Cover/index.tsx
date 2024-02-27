@@ -14,7 +14,7 @@ type Props = Pick<Show, "rating" | "name" | "image" | "genres"> & {
 
 export default function Cover({ small, rating, name, image, genres }: Props) {
   return (
-    <S.Card small={small}>
+    <S.Card styled={{ small }}>
       {image ? (
         <S.CardMedia image={image} title={name} />
       ) : (
